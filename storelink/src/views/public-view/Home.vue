@@ -1,141 +1,128 @@
 <template>
   <v-app id="inspire">
     <PublicLayoutHeader/>
-      <v-main class="main-section">
-        <v-container>
+    <div class="searchBanner"> 
+      <div class="searchInput">
+        <input type="search" placeholder="Search" v-model="search">
+        <!-- <p>{{search}}</p> -->
+      </div>         
+    </div>  
+  <v-main class="main-section">
+    <v-container>     
+      <v-row class="storageCard-row">
+        <v-col col="4">
           <v-row>
+            <v-card
+              class="storageCard-card"
+              max-width="370"
+              height="420"
+              v-for="post in sortSearch" :key="post.storageId"
+            >
+              <v-img
+                class="white--text align-end"
+                height="200px"
+                :src=post.storageImage
+              >
+                  <v-card-title class="card-title">
+                    {{post.storageName}}
+                  </v-card-title>
+
+                  <v-row class="date-location-row">
+                    <v-card-subtitle class="card-subtitle">
+                      19.04.2021
+                    </v-card-subtitle>
+                    <v-card-subtitle class="card-subtitle">
+                      Almaty, Kazakhstan
+                    </v-card-subtitle>
+                  </v-row>
+              </v-img>
+
+          <v-row class="price-left-status-row">
+            <v-col 
+              cols="12"
+              sm="5"
+            >
+                <v-card-text class="price-card-text">
+                  <v-icon left color="black">mdi-label</v-icon>
+                      <span>
+                        {{post.storagePrice}}
+                      </span> ₸/м²
+                </v-card-text>
+            </v-col>
+      
             <v-col
               cols="12"
-              sm="12"
+              sm="4"
             >
-              <v-sheet
-                rounded="lg"
-                min-height="100"
-              >
-                <div>
-                  <input type="search" placeholder="typehere" v-model="search">
-                  <p>{{search}}</p>
-               </div>
-              </v-sheet>
-            </v-col>     
-          </v-row>
-
-          <v-row class="storageCard-row">
-            <v-col
-            col="4"
-            >
-              <v-row>
-  <v-card
-    class="storageCard-card"
-    max-width="370"
-    height="420"
-    v-for="post in sortSearch" :key="post.storageId"
-  >
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      :src=post.storageImage
-    >
-      <v-card-title class="card-title">
-          {{post.storageName}}
-        </v-card-title>
-
-      <v-row class="date-location-row">
-        <v-card-subtitle class="card-subtitle">
-            23.04.2021
-          </v-card-subtitle>
-      <v-card-subtitle class="card-subtitle">
-          Almaty, Kazakhstan
-          </v-card-subtitle>
-      </v-row>
-
-    </v-img>
-
-    <v-row class="price-left-status-row">
-        <v-col 
-        cols="12"
-        sm="5"
-        >
-            <v-card-text class="price-card-text">
-                <v-icon left color="black">mdi-label</v-icon>
-                    <span>
-                        {{post.storagePrice}}
-                    </span> ₸/м²
-            </v-card-text>
-        </v-col>
-        
-        <v-col
-        cols="12"
-        sm="4"
-        >
-            <v-card-text class="status-card-text">
+              <v-card-text class="status-card-text">
                 <span>
                     Свободно
                 </span>
-            </v-card-text>
-        </v-col>
+              </v-card-text>
+            </v-col>
 
-        <v-col
-        cols="12"
-        sm="3"
-        >
-            <v-card-text class="left-card-text">
-               <span>
-                   {{post.storageSize}}
+            <v-col
+              cols="12"
+              sm="3"
+            >
+              <v-card-text class="left-card-text">
+                <span>
+                    {{post.storageSize}}
                 </span> м²
-            </v-card-text>
-        </v-col>
-    </v-row>
-
-    <v-divider class="mx-3"></v-divider>
-
-    <v-row class="workTime-row">
-        <div>
-      <v-card-title class="workTime-title">Время работы</v-card-title>
-      <v-card-subtitle class="workTime-subtitle">
-          <span>
-            {{post.storageAvailableTime}}      
-              </span> p.m
-        </v-card-subtitle>
-       </div>
-    </v-row>
-
-    <v-divider class="mx-3"></v-divider>
-    
-
-    <v-card-actions>
-        <v-btn 
-        :href="'/show?id=' + post.storageId"
-        target="_self"
-        color="#007180"
-        text
-      >
-        Подробнее
-      </v-btn>
-      <v-btn
-        color="#FF385C"
-        text
-      >
-      
-      <v-icon>mdi-heart</v-icon>
-    
-      </v-btn>
-      <v-btn
-        color="primary"
-        text
-      >
-      <v-icon>mdi-share</v-icon>
-    
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-  </v-row>
-              </v-col>
+              </v-card-text>
+            </v-col>
           </v-row>
-        </v-container>
-      </v-main>
+
+    <v-divider class="mx-3"></v-divider>
+
+        <v-row class="workTime-row">
+          <div>
+            <v-card-title class="workTime-title">Время работы</v-card-title>
+              <v-card-subtitle class="workTime-subtitle">
+                <span>
+                  {{post.storageAvailableTime}}      
+                </span> p.m
+              </v-card-subtitle>
+          </div>
+        </v-row>
+
+    <v-divider class="mx-3"></v-divider>
+    
+        <v-card-actions>
+          <v-btn 
+            :href="'/show?id=' + post.storageId"
+            target="_self"
+            color="#007180"
+            text
+          >
+            Подробнее
+          </v-btn>
+
+          <v-btn
+            color="#FF385C"
+            text
+          >
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            text
+          >
+            <v-icon>mdi-share</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+  </v-row>
+</v-col>
+</v-row>
+
+<v-divider></v-divider>
+      
+</v-container>
+</v-main>
     <Footer/>
-  </v-app>
+</v-app>
 </template>
 
 
@@ -157,7 +144,7 @@ export default {
         
           let tempPosts = this.posts 
           
-            return tempPosts.filter(post => post.storageName && post.storageName.startsWith(this.search))
+            return tempPosts.filter(post => post.storageName && post.storageName.toLowerCase().includes(this.search) || post.storageDescription && post.storageDescription.toLowerCase().includes(this.search) )
       
             
       }
@@ -173,11 +160,41 @@ export default {
 }
 </script>
 
+
 <style lang="css" scoped>
+
+.searchInput {
+  position: relative;
+  top: 65%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -250px;
+  width: 500px;
+}
+
+.searchInput input {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  color: #333;
+  font-size: 15px;
+  border-radius: 3px;
+  letter-spacing: normal;
+  padding: 10px;
+}
+
+.searchBanner {
+  width: 100%;
+  height: 55vh;
+  background-image: url("../../assets/banner.jpg");
+  background-size: 1000px 500px;
+  /* background-size: 77% 115%; */
+  background-position: center;
+}
 
 .main-section {
   padding-top: 12px !important;  
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .storageCard-row {

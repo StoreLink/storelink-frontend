@@ -124,9 +124,6 @@ export default {
       this.posts = posts
       console.log(posts)
   }
-
-  
-  
 }
     
 </script>

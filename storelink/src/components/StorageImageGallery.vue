@@ -1,14 +1,14 @@
 <template>
-<div>
-  <v-card>
-    <v-carousel>
-      <v-carousel-item
-      :src=post.storageImage
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-      ></v-carousel-item>
-    </v-carousel>
-    
+  <div>
+    <v-card>
+      <v-carousel>
+        <v-carousel-item
+          :src=post.storageImage
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+        >
+        </v-carousel-item>
+      </v-carousel>
     </v-card>
   </div>
 </template>
@@ -21,6 +21,7 @@
       post: {}
     }
   },
+
   async mounted() {
     const requestOptions = {
     method: 'POST',
@@ -29,6 +30,7 @@
     },
     // body: JSON.stringify({ title: 'Vue POST Request Example' })
   };
+
     const res = await fetch (
       "http://localhost:8080/storage/"+ this.$route.query.id, requestOptions
     );

@@ -14,23 +14,13 @@ const routes = [
   {
     path: '/show',
     name: 'Show',
-    
     component: () => import(/* webpackChunkName: "show" */ '../views/public-view/Show.vue')
   },
   {
     path: '/new',
     name: 'AddStorage',
-
     component: () => import(/* webpackChunkName: "new" */ '../views/account-view/AddStorage.vue')
   },
-
-  {
-    path: '/new2',
-    name: 'Dobavit',
-
-    component: () => import(/* webpackChunkName: "new" */ '../views/account-view/Dobavit.vue')
-  },
-  
   {
     path: '*',
     name: 'NotFound',

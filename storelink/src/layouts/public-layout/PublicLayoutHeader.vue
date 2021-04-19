@@ -38,12 +38,13 @@
           href="new"
           text
           class="navBar-btn"
+          color="primary"
         >
           Сдайте помещение
         </v-btn>
         
-        
         <v-spacer></v-spacer>
+
         <v-btn
           href="covid"
           class="navBarCov-btn"
