@@ -2,7 +2,7 @@
     <div>
         <v-card>
             <v-card-title class="description-title">
-                <h3>Описание</h3>
+                <h3>Description</h3>
             </v-card-title>
             
             <v-card-text class="description-text">

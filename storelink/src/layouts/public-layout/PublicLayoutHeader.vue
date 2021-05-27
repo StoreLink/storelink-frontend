@@ -32,7 +32,7 @@
           text
           class="navBar-btn"
         >
-          Профиль
+          Profile
         </v-btn>
         <v-btn
           href="new"
@@ -40,7 +40,7 @@
           class="navBar-btn"
           color="primary"
         >
-          Сдайте помещение
+          Become a host
         </v-btn>
         
         <v-spacer></v-spacer>
@@ -55,7 +55,7 @@
        <v-btn
         color="signIn-btn"
        >
-         Войти
+         Login In
        </v-btn>
       </v-container>
     </v-app-bar>

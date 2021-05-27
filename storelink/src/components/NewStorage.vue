@@ -148,6 +148,29 @@
 
           </v-col>
 
+          <v-col
+            cols="12"
+            sm="6"
+          >
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="coordinatesTitle">
+              <h1 class="">Your coordinates</h1>
+              <p><strong>Latitude:</strong> {{ myCoordinates.lat }}, <strong>Longitude:</strong> {{ myCoordinates.lng }}</p>
+            </div>
+
+            <div class="coordinatesTitle">
+              <h1 class="">Map coordinates</h1>
+              <p><strong>Latitude:</strong> {{ mapCoordinates.lat }}, <strong>Longitude:</strong> {{ mapCoordinates.lng }}</p>
+            </div>
+          </div>
+            <GmapMap
+            :center="myCoordinates"
+            :zoom="zoom"
+            style="width:640px; height: 360px;"
+            ref="mapRef"
+        ></GmapMap>
+          </v-col>
+
           <v-col cols="12">
             <v-checkbox
               v-model="form.terms"
@@ -246,8 +269,6 @@
     </v-dialog>
   </v-card>
 </template>
-
-
 <script>
 
 export default {
@@ -264,7 +285,12 @@ export default {
 
   return {
     form: Object.assign({}, defaultForm),
-
+    map: null,
+    myCoordinates: {
+                lat: 0,
+                lng: 0
+            },
+            zoom: 16,
     rules: {
       fieldRules: 
       [
@@ -297,22 +323,56 @@ export default {
   },
 
     computed: {
-      // formIsValid () {
-      //   return (
-      //     this.form.storageName &&
-      //     this.form.storagePrice &&
-      //     this.form.sotrageSize &&
-      //     this.form.availableTime &&
-      //     this.form.description &&
-      //     this.form.phoneNumber &&
-      //     this.form.email &&
-      //     this.form.typeOfStorage &&
-      //     this.form.terms
-      //   )
-      // },
+      mapCoordinates() {
+        if(!this.map) {
+          return {
+            lat: 0,
+            lng: 0
+          };
+        }
+        return {
+          lat: this.map.getCenter().lat().toFixed(4),
+          lng: this.map.getCenter().lng().toFixed(4)
+        }
+      }
+    },
+    created() {
+        // getting user coordinates from browser request...
+        
+        if (localStorage.center) {
+          this.myCoordinates = JSON.parse(localStorage.center);
+        } else {
+          this.$getLocation({})
+            .then(coordinates => {
+                this.myCoordinates = coordinates;
+            })
+            .catch(error => alert(error));
+        }
+
+        if (localStorage.zoom) {
+          this.zoom = parseInt(localStorage.zoom);
+        }
+    },
+
+    mounted() {
+      //adding map to the data object
+      this.$refs.mapRef.$mapPromise.then(map => this.map = map);
     },
 
     methods: {
+
+      handleDrag() {
+        //getting center and zoom level, store in localstorage
+        let center = {
+          lat: this.map.getCenter().lat(),
+          lng: this.map.getCenter().lng()
+        };
+
+        let zoom = this.map.getZoom();
+        localStorage.center = JSON.stringify(center);
+        localStorage.zoom = zoom;
+      },
+      
       resetForm () {
         this.form = Object.assign({}, this.defaultForm)
         this.$refs.form.reset()
@@ -323,17 +383,20 @@ export default {
       },
       sendData: async function () {
       // console.log("TESST")
+      var storage = window.localStorage
       const requestOptions = {
         method: 'POST',
         headers: { 
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          "Authorization": "Bearer "+storage.getItem("token")
+
         },
         body: JSON.stringify({ 
           storageName: this.storageName,
           storageDescription: this.description,
-          storageImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Room_Athens_Hilton.jpg/1200px-Room_Athens_Hilton.jpg",
-          storageLatitude: 43.204952920568246,
-          storageLongitude: 76.87438805104742,
+          storageImage: "https://mod-b.ru/upload/modulnyj%20ofis%20%20(36).jpg",
+          storageLatitude: this.myCoordinates.lat,
+          storageLongitude: this.myCoordinates.lng,
           storageSize: this.sotrageSize,
           storagePrice: this.storagePrice,
           storageAvailableTime: this.availableTime,
@@ -351,7 +414,14 @@ export default {
 
 <style lang="css" scoped>
 .storageType {
-  margin-bottom: 42px;
+  margin-bottom: 30px;
+}
+
+.coordinatesTitle h1 {
+  color: #424242;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 
 </style>

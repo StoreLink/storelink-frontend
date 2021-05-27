@@ -141,10 +141,8 @@ export default {
   },
   computed: {
       sortSearch() {
-        
           let tempPosts = this.posts 
-          
-            return tempPosts.filter(post => post.storageName && post.storageName.toLowerCase().includes(this.search) || post.storageDescription && post.storageDescription.toLowerCase().includes(this.search) )
+          return tempPosts.filter(post => post.storageName && post.storageName.toLowerCase().includes(this.search) || post.storageDescription && post.storageDescription.toLowerCase().includes(this.search) )
       
             
       }

@@ -12,14 +12,13 @@
                 rounded="lg"
                 min-height="48"
               >
-              <v-card elevation="1">
-                <v-card-title class="storageTitle-title">
-                <span>
-                  
-                  {{post.storageName}}
-                  </span>
+                <v-card elevation="1">
+                  <v-card-title class="storageTitle-title">
+                    <span> 
+                      {{post.storageName}}
+                    </span>
                   </v-card-title>
-                  </v-card>
+                </v-card>
               </v-sheet>
             </v-col>
           </v-row>
@@ -52,72 +51,63 @@
 
           <v-row>
             <v-col
-            cols="12"
-            sm="12"
+              cols="12"
+              sm="12"
             >
             <v-sheet
                 min-height="48"
                 rounded="lg"  
-              >
-             <StorageDescriptionSection/>
+            >
+              <StorageDescriptionSection/>
             </v-sheet>
-
             </v-col>
           </v-row>
 
           <v-row>
             <v-col
-            cols="12"
-            sm="12"
+              cols="12"
+              sm="12"
             >
-            <v-sheet
+              <v-sheet
                 min-height="48"
                 rounded="lg"  
               >
-              <GoogleMaps/>
-            </v-sheet>
-
-            </v-col>
-
-                        <v-col
-            cols="12"
-            sm="12"
-            >
-            <v-sheet
-                min-height="48"
-                rounded="lg"  
-              >
-              <!-- <AlikhanComp/> -->
-            </v-sheet>
-
+                <GoogleMaps/>
+              </v-sheet>
             </v-col>
           </v-row>
         </v-container>
       </v-main>
-        <Footer/>
-         
+    <Footer/>      
   </v-app>
 </template>
 
 <script> 
-// @ is an alias to /src
 import StorageImageGallery from '@/components/StorageImageGallery';
 import PublicLayoutHeader from '@/layouts/public-layout/PublicLayoutHeader';
 import StorageDescriptionSection from '@/components/StorageDescriptionSection';
 import StorageSideBarInfo from '@/components/StorageSideBarInfo';
 import GoogleMaps from '@/components/GoogleMaps';
 import Footer from '@/components/Footer';
-// import AlikhanComp from '@/components/AlikhanComp';
 
 export default {
   name: 'Show',
-  components: {StorageImageGallery, PublicLayoutHeader, Footer, 
-                StorageSideBarInfo, GoogleMaps, StorageDescriptionSection},
-    data() {
+  components: 
+  {
+    StorageImageGallery, 
+    PublicLayoutHeader, 
+    Footer, 
+    StorageSideBarInfo, 
+    GoogleMaps, 
+    StorageDescriptionSection
+  },
+
+  data() {
     return {
       post: {}
     }
   },
+
   async mounted() {
     console.log(this.$route.query.id)
     const requestOptions = {
@@ -125,8 +115,8 @@ export default {
     headers: { 
       'Content-Type': 'application/json'
     },
-    // body: JSON.stringify({ title: 'Vue POST Request Example' })
   };
+
     const res = await fetch (
       "http://localhost:8080/storage/" + this.$route.query.id, requestOptions
     );
@@ -135,7 +125,6 @@ export default {
       //console.log(post)
   }
 }
-
 </script>
 
 

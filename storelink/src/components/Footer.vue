@@ -12,13 +12,13 @@
               class="footer-row-col"
             >
                 <section class="footer-section">
-                  <h4>О нас</h4>
+                  <h4>About Us</h4>
                     <ul>
-                      <li>Команда</li>
-                      <li>Пресс центр</li>
-                      <li>Для инвесторов</li>
-                      <li>Работа</li>
-                      <li>Команда</li>
+                      <li>Team</li>
+                      <li>Press center</li>
+                      <li>For investors</li>
+                      <li>Work</li>
+                      <li>Empty blank</li>
                     </ul>
                 </section>
             </v-col>
@@ -31,11 +31,11 @@
                 <section class="footer-section">
                   <h4>Storelink</h4>
                     <ul>
-                      <li>Пользовательское соглашение</li>
-                      <li>Правила размещения объявлений</li>
-                      <li>Для инвесторов</li>
+                      <li>Terms of use</li>
+                      <li>Rules for posting ads</li>
                       <li>FAQ</li>
-                      <li>Реквизиты компании</li>
+                      <li>Company details</li>
+                      <li>Empty blank</li>
                     </ul>
                 </section>
           </v-col>
@@ -46,9 +46,9 @@
             class="footer-row-col"
           >
             <section class="footer-section">
-              <h4>Приложения</h4>
+              <h4>Applications</h4>
               <ul>
-                <li>Следите за нашими новостями</li>
+                <li>Follow our news</li>
                 <li>
                   <v-btn
                     v-for="icon in icons"
@@ -61,7 +61,7 @@
                     </v-icon>
                   </v-btn>
                 </li>
-                <li>Мобильное приложение</li>
+                <li>Mobile App:</li>
                 <li>
                   <v-img
                     src="https://selmay.ru/wp-content/uploads/2020/05/app-store-download.png"
@@ -81,7 +81,7 @@
       <v-row class="bottomBar-row">
         <v-col class="bottomBar-row-col">
             <v-card-text class="bottomBar-text" >
-              © {{ new Date().getFullYear() }} — StoreLink. All rights reserved · <a>Конфиденциальность</a>
+              © {{ new Date().getFullYear() }} — StoreLink. All rights reserved · <a>Confidentiality</a>
             </v-card-text>     
         </v-col>
       </v-row>

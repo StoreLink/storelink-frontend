@@ -17,7 +17,7 @@
 
       <v-row class="date-location-row">
         <v-card-subtitle class="card-subtitle">
-            23.04.2021
+            20.04.2021
           </v-card-subtitle>
       <v-card-subtitle class="card-subtitle">
           Almaty, Kazakhstan
@@ -45,7 +45,7 @@
         >
             <v-card-text class="status-card-text">
                 <span>
-                    Свободно
+                    Free
                 </span>
             </v-card-text>
         </v-col>
@@ -66,7 +66,7 @@
 
     <v-row class="workTime-row">
         <div>
-      <v-card-title class="workTime-title">Время работы</v-card-title>
+      <v-card-title class="workTime-title">Work time</v-card-title>
       <v-card-subtitle class="workTime-subtitle">
           <span>
             {{post.storageAvailableTime}}      
@@ -85,7 +85,7 @@
         color="#007180"
         text
       >
-        Подробнее
+        More
       </v-btn>
       <v-btn
         color="#FF385C"

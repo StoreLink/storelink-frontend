@@ -9,7 +9,7 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>Цена за м²</v-list-item-title>
+          <v-list-item-title>Price per м²</v-list-item-title>
           <v-list-item-subtitle>
            <span>
              {{post.storagePrice}}
@@ -27,7 +27,7 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>Осталось места</v-list-item-title>
+          <v-list-item-title>Storage size</v-list-item-title>
           <v-list-item-subtitle>
             <span>
               {{post.storageSize}}
@@ -46,10 +46,10 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>Тип</v-list-item-title>
+          <v-list-item-title>Type of storage</v-list-item-title>
           <v-list-item-subtitle>
             <span>
-              Контейнер
+              Container
             </span>
             </v-list-item-subtitle>
         </v-list-item-content>
@@ -67,11 +67,11 @@
         <v-list-item-content>
           <v-list-item-title>
             <span>
-              Город 
+              Town 
             </span>
-            <a href="#google-maps-view">показать на карте</a>
+            <a href="#google-maps-view">show on map</a>
           </v-list-item-title>
-          <v-list-item-subtitle>Алматы, Ауэзовский р-н</v-list-item-subtitle>
+          <v-list-item-subtitle>Almaty, Kazakhstan</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -85,10 +85,10 @@
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>График работы</v-list-item-title>
+          <v-list-item-title>Available time</v-list-item-title>
           <v-list-item-subtitle>
             <span>
-              {{post.storageAvailableTime}}
+              {{post.storageAvailableTime}} p.m.
             </span>
           </v-list-item-subtitle>
         </v-list-item-content>

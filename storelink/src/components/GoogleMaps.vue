@@ -64,6 +64,4 @@
         //console.log(post)
     }
   }
-
-  
 </script>
