@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <PublicLayoutHeader/>
+    <NavMenu/>
       <v-main class="grey lighten-3 pt-3">
         <v-container>
           <v-row class="newStorage">
@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import PublicLayoutHeader from '@/layouts/public-layout/PublicLayoutHeader';
+import NavMenu from '@/components/menu/NavMenu';
 import Footer from '@/components/Footer';
 import NewStorage from '../../components/NewStorage.vue'
 
 export default {
   name: 'Show',
-  components: {PublicLayoutHeader, Footer, NewStorage},
+  components: {NavMenu, Footer, NewStorage},
 }
 </script>
 

@@ -6,6 +6,10 @@ import Show from '../views/public-view/Show.vue'
 import AddStorage from '../views/account-view/AddStorage.vue'
 import TestPage from '../views/TestPage.vue'
 import Login from '../views/account-view/Login.vue'
+import SignUp from '../views/public-view/SignUp.vue'
+import UserPosts from '../views/account-view/UserPosts.vue'
+import EditProfile from '../views/account-view/EditProfile.vue'
+import Profile from '../views/account-view/Profile.vue'
 import VueGeolocation from 'vue-browser-geolocation'
 
 Vue.use(VueRouter)
@@ -41,6 +45,26 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: SignUp
+  },
+  {
+    path: '/userPosts',
+    name: 'UserPosts',
+    component: UserPosts
+  },
+  {
+    path: '/editProfile',
+    name: 'EditProfile',
+    component: EditProfile
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 
 ]

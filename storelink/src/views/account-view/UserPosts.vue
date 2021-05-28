@@ -1,9 +1,10 @@
 <template>
   <v-app id="inspire">
-    <NavMenu/>
+    <PublicLayoutHeader/>
     <div class="searchBanner"> 
       <div class="searchInput">
-        <input type="search" placeholder="Search" v-model="search"> 
+        <input type="search" placeholder="Search" v-model="search">
+        <!-- <p>{{search}}</p> -->
       </div>         
     </div>  
   <v-main class="main-section">
@@ -55,7 +56,7 @@
             >
               <v-card-text class="status-card-text">
                 <span>
-                    Free
+                    Свободно
                 </span>
               </v-card-text>
             </v-col>
@@ -76,7 +77,7 @@
 
         <v-row class="workTime-row">
           <div>
-            <v-card-title class="workTime-title">Available time</v-card-title>
+            <v-card-title class="workTime-title">Время работы</v-card-title>
               <v-card-subtitle class="workTime-subtitle">
                 <span>
                   {{post.storageAvailableTime}}      
@@ -94,7 +95,7 @@
             color="#007180"
             text
           >
-            Show more
+            Подробнее
           </v-btn>
 
           <v-btn
@@ -126,7 +127,7 @@
 
 
 <script>
-import NavMenu from '@/components/menu/NavMenu';
+import PublicLayoutHeader from '@/layouts/public-layout/PublicLayoutHeader';
 import Footer from '@/components/Footer';
 
 export default {
@@ -139,8 +140,8 @@ export default {
       return {};
     }
   },
-  name: "Home",
-    components: {Footer, NavMenu},
+  name: "UserPosts",
+    components: {Footer, PublicLayoutHeader},
     data() {
     return {
       posts: [],

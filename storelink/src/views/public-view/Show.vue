@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <PublicLayoutHeader/>
+    <NavMenu/>
       <v-main class="grey lighten-3 pt-3">
         <v-container>
           <v-row>
@@ -84,7 +84,7 @@
 
 <script> 
 import StorageImageGallery from '@/components/StorageImageGallery';
-import PublicLayoutHeader from '@/layouts/public-layout/PublicLayoutHeader';
+import NavMenu from '@/components/menu/NavMenu';
 import StorageDescriptionSection from '@/components/StorageDescriptionSection';
 import StorageSideBarInfo from '@/components/StorageSideBarInfo';
 import GoogleMaps from '@/components/GoogleMaps';
@@ -95,7 +95,7 @@ export default {
   components: 
   {
     StorageImageGallery, 
-    PublicLayoutHeader, 
+    NavMenu, 
     Footer, 
     StorageSideBarInfo, 
     GoogleMaps, 

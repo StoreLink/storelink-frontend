@@ -1,6 +1,6 @@
 <template>
     <v-app id="inspire">
-            <PublicLayoutHeader/>
+            <NavMenu/>
         <v-main class="mainSection">
             <v-row>
                 <v-col 
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import PublicLayoutHeader from '@/layouts/public-layout/PublicLayoutHeader';
+import NavMenu from '@/components/menu/NavMenu';
 import Footer from '@/components/Footer';
 export default {
     name: "404",
-    components: {PublicLayoutHeader, Footer}
+    components: {NavMenu, Footer}
 }
 </script>
 
